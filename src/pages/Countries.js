@@ -36,7 +36,7 @@ const Countries = (props) => {
       <MainHeader>Countries</MainHeader>
       {data.countries.map(country => {
         return <Link to={"/countries/" + country.code} key={country.code} undertext="true">
-          <>
+          <div>
             <ReactCountryFlag code={country.code} svg styleProps={{
               width: '20px',
               height: '20px',
@@ -44,7 +44,7 @@ const Countries = (props) => {
               marginBottom: '4px'
             }} />
             {country.name}
-          </>
+          </div>
           <Undertext>{langString(country.languages)}</Undertext>
           <ContinentName>Located in: {country.continent.name}</ContinentName>
         </Link>
