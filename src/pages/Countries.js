@@ -32,8 +32,10 @@ const Countries = (props) => {
   //TODO: Style this in a nice way
   return (
     <Wrapper>
-      <BackLink to="/"><IoIosArrowDropleft /></BackLink>
-      <MainHeader>Countries</MainHeader>
+      <MainHeader>
+        <BackLink to="/"><IoIosArrowDropleft /></BackLink>
+        Countries
+      </MainHeader>
       {data.countries.map(country => {
         return <Link to={"/countries/" + country.code} key={country.code} undertext="true">
           <div>

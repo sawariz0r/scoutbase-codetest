@@ -6,6 +6,7 @@ import ReactCountryFlag from "react-country-flag";
 import styled from "styled-components";
 
 import {
+  Info,
   BackLink,
   Error,
   Wrapper,
@@ -14,7 +15,7 @@ import {
 } from "./styled/global";
 
 const Text = styled.span`
-  
+  align-self: flex-start;
 `;
 
 const Country = (props) => {
@@ -26,23 +27,27 @@ const Country = (props) => {
 
   return (
     <Wrapper>
-      <BackLink to="/countries"><IoIosArrowDropleft /></BackLink>
-      <MainHeader>{country.name}</MainHeader>
+      <MainHeader>
+        <BackLink to="/countries"><IoIosArrowDropleft /></BackLink>
+        {country.name}
+      </MainHeader>
       <ReactCountryFlag code={props.countryCode} svg styleProps={{
-                width: '200px',
-                height: '200px',
-                marginRight: '5px',
-                marginBottom: '4px'
-              }} />
-    
-    <Text>Name: {country.name}</Text>
-    <Text>Native name: {country.native}</Text>
-    <Text>Phone code: +{country.phone}</Text>
-    <Text>Currency: {country.currency}</Text>
-    <Text>Languages: {country.languages.map(x => x.name + "(" + x.native + ") ")}</Text>
-    <Text>Continent: {country.continent.name}</Text>
-    <Text></Text>
-      
+        width: '200px',
+        height: '200px',
+        marginRight: '5px',
+        marginBottom: '4px'
+      }} />
+
+      <Text>Info about {country.name}:</Text>
+      <Info>
+        <Text>Name: {country.name}</Text>
+        <Text>Native name: {country.native}</Text>
+        <Text>Phone code: +{country.phone}</Text>
+        <Text>Currency: {country.currency}</Text>
+        <Text>Languages: {country.languages.map(x => x.name + "(" + x.native + ") ")}</Text>
+        <Text>Continent: {country.continent.name}</Text>
+      </Info>
+
     </Wrapper>
   )
 }

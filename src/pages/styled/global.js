@@ -3,7 +3,7 @@ import { Link as ReachLink } from "@reach/router";
 
 export const Wrapper = styled.div`
   box-sizing: border-box;
-  padding: 50px 20px;
+  padding: 20px 20px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,11 +25,12 @@ export const Link = styled(ReachLink)`
 `;
 
 export const BackLink = styled(ReachLink)`
-  position: absolute;
-  top: 10px;
-  left: 20px;
   color: #3DA5D9;
   font-size: 2rem;
+  margin-right: 3px;
+  svg {
+    margin-bottom: -4.5px;
+  }
 `;
 
 export const SmallLink = styled(ReachLink)`
@@ -38,11 +39,22 @@ export const SmallLink = styled(ReachLink)`
 
 `;
 
+export const Code = styled.code`
+  background: #0E1428;
+  padding: 10px;
+  border-radius: 5px;
+  color: #FEC601;
+`;
+
+export const Info = styled(Code)`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
 export const MainHeader = styled.h1`
-  position: absolute;
+  display: flex;
   margin: 0;
-  top: 5px;
-  left: ${props => props.noLeftMargin ? "20px" : "60px"};
   color: #2364AA;
 `;
 
