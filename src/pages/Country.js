@@ -28,7 +28,7 @@ const Country = (props) => {
 
   return (
     <Wrapper>
-      <BackLink to={props.continentCode ? "/" + props.continentCode : "/countries"}><IoIosArrowDropleft /></BackLink>
+      <BackLink to="/countries"><IoIosArrowDropleft /></BackLink>
       <MainHeader>{country.name}</MainHeader>
       <ReactCountryFlag code={props.countryCode} svg styleProps={{
                 width: '150px',
@@ -42,7 +42,7 @@ const Country = (props) => {
     <Text>Phone code: +{country.phone}</Text>
     <Text>Currency: {country.currency}</Text>
     <Text>Languages: {country.languages.map(x => x.name + "(" + x.native + ") ")}</Text>
-    <Text>Continent: <SmallLink to={"/" + country.continent.code}>{country.continent.name}</SmallLink></Text>
+    <Text>Continent: {country.continent.name}</Text>
     <Text></Text>
       
     </Wrapper>
