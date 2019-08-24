@@ -2,20 +2,30 @@ import React from 'react';
 import { useQuery } from "@apollo/react-hooks";
 import { CONTINENTS_QUERY } from "./../queries";
 import { Link } from "@reach/router";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  box-sizing: border-box;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #F1EDEE;
+`;
 
 const Home = () => {
   const { loading, data } = useQuery(CONTINENTS_QUERY());
   return (
-    <div>
-      <h2>Welcome</h2>
+    <Wrapper>
+      <h2>View countries by list or by continent</h2>
       {loading ? "Loading.." : null}
       <Link to="/countries">List of countries</Link>
       {loading ? null : (
         data.continents.map(cont => {
-          return <Link key={cont.code} to={"/" + cont.code} >{cont.name}</Link>
+          return <Link className="link" key={cont.code} to={"/" + cont.code} >{cont.name}</Link>
         })
       )}
-    </div>
+    </Wrapper>
   )
 }
 
