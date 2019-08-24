@@ -5,7 +5,6 @@ import { Router } from "@reach/router";
 
 import Home from "./pages/Home";
 import Countries from "./pages/Countries";
-import Continent from "./pages/Continent";
 import Country from "./pages/Country";
 
 const Client = new ApolloClient({
@@ -17,7 +16,7 @@ function App() {
     <ApolloProvider client={Client}>
       <Router>
         <Home path="/" />
-        <Continent path="/:continentCode/" />
+        <Countries path="/:continentCode/" />
         <Country path="/:continentCode/:countryCode/" />
         <Countries path="/countries/" />
         <Country path="/countries/:countryCode" />

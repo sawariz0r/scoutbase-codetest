@@ -18,7 +18,15 @@ export const CONTINENT_QUERY = (code) => {
       name
       countries {
         name
-        code
+        code 
+        languages {
+          name
+          native
+        }
+        continent {
+          code
+          name
+        }
       }
     }
   }`;
@@ -30,6 +38,14 @@ export const COUNTRIES_QUERY = () => {
     countries {
       name
       code
+      languages {
+        name
+        native
+      }
+      continent {
+        code
+        name
+      }
     }
   } 
   `;
@@ -40,7 +56,19 @@ export const COUNTRY_QUERY = (code) => {
   {
     country(code: "${code.toUpperCase()}") {
       name
-      code
+      native
+      phone
+      currency
+      emoji
+      emojiU
+      languages { 
+        name
+        native
+      }
+      continent {
+        code
+        name
+      }
     }
   }`;
 };

@@ -1,31 +1,52 @@
 import React from 'react';
 import { useQuery } from "@apollo/react-hooks";
 import { COUNTRY_QUERY } from "./../queries";
-import { Link } from "@reach/router";
+import { IoIosArrowDropleft } from "react-icons/io";
+import ReactCountryFlag from "react-country-flag";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
-  box-sizing: border-box;
-  padding: 20px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: #F1EDEE;
+import {
+  SmallLink,
+  BackLink,
+  Error,
+  Link,
+  Wrapper,
+  MainHeader,
+  Loading
+} from "./styled/global";
+
+const Text = styled.span`
+  
 `;
 
 const Country = (props) => {
   const { loading, data } = useQuery(COUNTRY_QUERY(props.countryCode));
-  if (data.country === null) {
-    return (<p>error</p>)
-  } else {
-    return (
-      <Wrapper>
-        <Link to={props.continentCode ? "/" + props.continentCode : "/countries"}>Back</Link>
-      <h2>Country: {loading ? null : data.country.name}</h2>
-        {loading ? null : <p>{data.country.name}</p>}
-      </Wrapper>
-    )
-  }
+
+  if (data.country === null) return <Wrapper><Error>Error occured!</Error></Wrapper>
+  if (loading) return <Wrapper><Loading>Loading..</Loading></Wrapper>
+  const country = data.country;
+
+  return (
+    <Wrapper>
+      <BackLink to={props.continentCode ? "/" + props.continentCode : "/countries"}><IoIosArrowDropleft /></BackLink>
+      <MainHeader>{country.name}</MainHeader>
+      <ReactCountryFlag code={props.countryCode} svg styleProps={{
+                width: '150px',
+                height: '150px',
+                marginRight: '5px',
+                marginBottom: '4px'
+              }} />
+    
+    <Text>Name: {country.name}</Text>
+    <Text>Native name: {country.native}</Text>
+    <Text>Phone code: +{country.phone}</Text>
+    <Text>Currency: {country.currency}</Text>
+    <Text>Languages: {country.languages.map(x => x.name + "(" + x.native + ") ")}</Text>
+    <Text>Continent: <SmallLink to={"/" + country.continent.code}>{country.continent.name}</SmallLink></Text>
+    <Text></Text>
+      
+    </Wrapper>
+  )
 }
 
 export default Country

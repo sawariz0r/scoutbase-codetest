@@ -1,25 +1,50 @@
 import React from 'react';
 import { useQuery } from "@apollo/react-hooks";
 import { COUNTRIES_QUERY } from "./../queries";
-import { Link } from "@reach/router";
-import styled from "styled-components";
+import { IoIosArrowDropleft } from "react-icons/io";
+import ReactCountryFlag from "react-country-flag"
+import {
+  Undertext,
+  ContinentName,
+  BackLink,
+  Link,
+  Wrapper,
+  MainHeader
+} from "./styled/global";
 
-const Wrapper = styled.div`
-  box-sizing: border-box;
-  padding: 20px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: #F1EDEE;
-`;
+const langString = (arr) => {
+  if (arr.length === 0) return "No Languages";
+  let result = "Languages: ";
 
-const Countries = () => {
+  for (let i = 0; i < arr.length; i++) {
+    result += arr[i].name + "(" + arr[i].native + ") "
+  }
+
+  return result;
+}
+
+const Countries = (props) => {
   const { loading, data } = useQuery(COUNTRIES_QUERY());
   return (
     <Wrapper>
-    <Link to="/">Back</Link>
-      <h2>Countries</h2>
-      {loading ? null : data.countries.map(country => <Link to={"/countries/" + country.code} key={country.code}>{country.name}</Link>)}
+      <BackLink to="/"><IoIosArrowDropleft /></BackLink>
+      <MainHeader>Countries</MainHeader>
+      {loading ? null : (
+        data.countries.map(country => {
+          return <Link to={"/countries/" + country.code} key={country.code} undertext="true">
+            <div>
+              <ReactCountryFlag code={country.code} svg styleProps={{
+                width: '20px',
+                height: '20px',
+                marginRight: '5px',
+                marginBottom: '4px'
+              }} />
+              {country.name}
+            </div>
+            <Undertext>{langString(country.languages)}</Undertext>
+            <ContinentName>Located in: {country.continent.name}</ContinentName>
+          </Link>
+        }))}
     </Wrapper>
   )
 }
