@@ -31,8 +31,8 @@ const Country = (props) => {
       <BackLink to="/countries"><IoIosArrowDropleft /></BackLink>
       <MainHeader>{country.name}</MainHeader>
       <ReactCountryFlag code={props.countryCode} svg styleProps={{
-                width: '150px',
-                height: '150px',
+                width: '200px',
+                height: '200px',
                 marginRight: '5px',
                 marginBottom: '4px'
               }} />
