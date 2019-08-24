@@ -25,6 +25,7 @@ const langString = (arr) => {
 
 const Countries = (props) => {
   const { loading, data } = useQuery(COUNTRIES_QUERY());
+  
   return (
     <Wrapper>
       <BackLink to="/"><IoIosArrowDropleft /></BackLink>

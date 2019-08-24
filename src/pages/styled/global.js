@@ -18,6 +18,10 @@ export const Link = styled(ReachLink)`
   display: ${props => props.undertext ? "flex" : "block"}
   flex-direction: column;
   position: relative;
+
+  &:hover {
+    color: #225A77;
+  }
 `;
 
 export const BackLink = styled(ReachLink)`

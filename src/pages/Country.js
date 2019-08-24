@@ -6,10 +6,8 @@ import ReactCountryFlag from "react-country-flag";
 import styled from "styled-components";
 
 import {
-  SmallLink,
   BackLink,
   Error,
-  Link,
   Wrapper,
   MainHeader,
   Loading

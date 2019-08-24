@@ -1,12 +1,9 @@
 import React from 'react';
-import { useQuery } from "@apollo/react-hooks";
-import { CONTINENTS_QUERY } from "./../queries";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 
 import {
   Link,
-  Loading,
   Wrapper,
   MainHeader
 } from "./styled/global";
@@ -19,8 +16,6 @@ const Code = styled.code`
 `;
 
 const Home = () => {
-  const { loading, data } = useQuery(CONTINENTS_QUERY());
-  if (loading) return <Loading>Loading..</Loading>;
   return (
     <Wrapper>
       <MainHeader noLeftMargin="true">View countries by list or by continent</MainHeader>
