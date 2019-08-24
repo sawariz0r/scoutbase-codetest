@@ -11,13 +11,12 @@ const Client = new ApolloClient({
   uri: "https://countries.trevorblades.com/"
 });
 
+// Clean paths up
 function App() {
   return (
     <ApolloProvider client={Client}>
       <Router>
         <Home path="/" />
-        <Countries path="/:continentCode/" />
-        <Country path="/:continentCode/:countryCode/" />
         <Countries path="/countries/" />
         <Country path="/countries/:countryCode" />
       </Router>
