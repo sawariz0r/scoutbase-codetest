@@ -6,6 +6,8 @@ import ReactCountryFlag from "react-country-flag";
 import styled from "styled-components";
 
 import {
+  SpinnerWrapper,
+  StyledSpinner,
   Info,
   BackLink,
   Error,
@@ -22,7 +24,20 @@ const Country = (props) => {
   const { loading, data } = useQuery(COUNTRY_QUERY(props.countryCode));
 
   if (data.country === null) return <Wrapper><Error>Error occured!</Error></Wrapper>
-  if (loading) return <Wrapper><Loading>Loading..</Loading></Wrapper>
+  if (loading) return (
+    <SpinnerWrapper>
+      <StyledSpinner viewBox="0 0 50 50">
+        <circle
+          className="path"
+          cx="25"
+          cy="25"
+          r="20"
+          fill="none"
+          strokeWidth="2"
+        />
+      </StyledSpinner>
+    </SpinnerWrapper>
+  );
   const country = data.country;
 
   return (
@@ -38,7 +53,6 @@ const Country = (props) => {
         marginBottom: '4px'
       }} />
 
-      <Text>Info about {country.name}:</Text>
       <Info>
         <Text>Name: {country.name}</Text>
         <Text>Native name: {country.native}</Text>

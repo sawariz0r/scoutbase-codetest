@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactMarkdown from "react-markdown";
-import styled from "styled-components";
 
 import {
   Code,
@@ -13,8 +12,8 @@ import {
 const Home = () => {
   return (
     <Wrapper>
-      <MainHeader noLeftMargin="true">View countries by list or by continent</MainHeader>
-      <Link to="/countries">List of countries</Link>
+      <MainHeader noLeftMargin="true">Code challenge: Country list</MainHeader>
+      <Link to="/countries">View list of countries</Link>
       
       <Code><ReactMarkdown source="
         # Front-end task of Code Challenge for Scoutbase
