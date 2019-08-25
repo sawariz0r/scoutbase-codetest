@@ -26,9 +26,9 @@ const langString = (arr) => {
 }
 
 const Countries = (props) => {
-  const { loading, data } = useQuery(COUNTRIES_QUERY());
+  const { loading, data, error } = useQuery(COUNTRIES_QUERY());
   if (loading) return <Wrapper>Loading..</Wrapper>
-
+  if (error) return <Wrapper>Error! Check console for more information {console.log(error)}</Wrapper>
   //TODO: Style this in a nice way
   return (
     <Wrapper>
