@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   background: #34344A;
+  overflow: hidden;
 `;
 
 export const CountriesWrapper = styled.div`
@@ -47,6 +48,8 @@ export const Code = styled.code`
   padding: 10px;
   border-radius: 5px;
   color: #CC5A71;
+  font-size: 1rem;
+  max-width: 100vw;
   a {
     color: #80475E;
   }
@@ -96,6 +99,10 @@ export const SearchBar = styled.input`
   padding: 10px;
   border-radius: 5px;
   align-self: flex-start;
+  @media (max-width: 640px) {
+    align-self: center;
+    width: 85vw;
+  }
 `;
 
 // Spinner by knowbody@github
