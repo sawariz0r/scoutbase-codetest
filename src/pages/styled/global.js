@@ -83,3 +83,11 @@ export const ContinentName = styled.span`
     content: ')';
   }
 `;
+
+export const SearchBar = styled.input`
+  margin: 10px 0;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  align-self: flex-start;
+`;

@@ -11,7 +11,6 @@ const Client = new ApolloClient({
   uri: "https://countries.trevorblades.com/"
 });
 
-// Clean paths up
 function App() {
   return (
     <ApolloProvider client={Client}>

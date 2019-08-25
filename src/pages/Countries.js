@@ -6,6 +6,7 @@ import ReactCountryFlag from "react-country-flag";
 import { langString } from "./../helpers";
 
 import {
+  SearchBar,
   Undertext,
   ContinentName,
   BackLink,
@@ -17,7 +18,6 @@ import {
 const Countries = (props) => {
   const { loading, data, error } = useQuery(COUNTRIES_QUERY());
   const [countries, setCountries] = useState([]);
-
   const memoData = useMemo(() => {
     if (!loading) {
       setCountries(data.countries);
@@ -48,22 +48,16 @@ const Countries = (props) => {
         <BackLink to="/"><IoIosArrowDropleft /></BackLink>
         Countries
       </MainHeader>
-      <input type="text" onChange={filterResults} />
-      {countries.map(country => {
-        return <Link to={"/countries/" + country.code} key={country.code} undertext="true">
-          <div>
-            {/*<ReactCountryFlag code={country.code} svg styleProps={{
-              width: '20px',
-              height: '20px',
-              marginRight: '5px',
-              marginBottom: '4px'
-            }} />*/}
+      <SearchBar type="text" placeholder="Search.." onChange={filterResults} />
+      {
+        countries.map(country => {
+          return <Link to={"/countries/" + country.code} key={country.code} undertext="true">
             {country.name}
-          </div>
-          <Undertext>{langString(country.languages)}</Undertext>
-          <ContinentName>Located in: {country.continent.name}</ContinentName>
-        </Link>
-      })}
+            <Undertext>{langString(country.languages)}</Undertext>
+            <ContinentName>Located in: {country.continent.name}</ContinentName>
+          </Link>
+        })
+      }
     </Wrapper>
   )
 }
